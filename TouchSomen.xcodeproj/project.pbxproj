@@ -13,6 +13,8 @@
 		3737B2551DE8323C005D7CD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737B2531DE8323C005D7CD9 /* Main.storyboard */; };
 		3737B25D1DE83704005D7CD9 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B25C1DE83704005D7CD9 /* WindowController.swift */; };
 		3737B26F1DE8409C005D7CD9 /* SomenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B26E1DE8409C005D7CD9 /* SomenView.swift */; };
+		37ADBCE81DEE9B6D00237BCD /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */; };
+		83C0FB483387ABCFDF300153 /* Pods_TouchSomen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		3737B2561DE8323C005D7CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3737B25C1DE83704005D7CD9 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		3737B26E1DE8409C005D7CD9 /* SomenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomenView.swift; sourceTree = "<group>"; };
+		37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		5A48A88004EB21050049065F /* Pods-TouchSomen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.release.xcconfig"; sourceTree = "<group>"; };
+		882230CC5857C0B3ABBA241B /* Pods-TouchSomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.debug.xcconfig"; sourceTree = "<group>"; };
+		B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchSomen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C0FB483387ABCFDF300153 /* Pods_TouchSomen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				3737B24C1DE8323B005D7CD9 /* TouchSomen */,
 				3737B24B1DE8323B005D7CD9 /* Products */,
+				B69719E0C3BBDCE54A3C0196 /* Pods */,
+				8176FEEC305E50F720A4BB3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +72,26 @@
 				3737B2531DE8323C005D7CD9 /* Main.storyboard */,
 				3737B2561DE8323C005D7CD9 /* Info.plist */,
 				3737B25C1DE83704005D7CD9 /* WindowController.swift */,
+				37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */,
 			);
 			path = TouchSomen;
+			sourceTree = "<group>";
+		};
+		8176FEEC305E50F720A4BB3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B69719E0C3BBDCE54A3C0196 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				882230CC5857C0B3ABBA241B /* Pods-TouchSomen.debug.xcconfig */,
+				5A48A88004EB21050049065F /* Pods-TouchSomen.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3737B2591DE8323C005D7CD9 /* Build configuration list for PBXNativeTarget "TouchSomen" */;
 			buildPhases = (
+				B7F32974D5B8D669B5F22ACB /* [CP] Check Pods Manifest.lock */,
 				3737B2461DE8323B005D7CD9 /* Sources */,
 				3737B2471DE8323B005D7CD9 /* Frameworks */,
 				3737B2481DE8323B005D7CD9 /* Resources */,
+				F8C4B940744AADA636B24033 /* [CP] Embed Pods Frameworks */,
+				1B495E0D2C1F36AC882803B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,12 +163,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B495E0D2C1F36AC882803B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7F32974D5B8D669B5F22ACB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8C4B940744AADA636B24033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3737B2461DE8323B005D7CD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3737B2501DE8323C005D7CD9 /* ViewController.swift in Sources */,
+				37ADBCE81DEE9B6D00237BCD /* SocketManager.swift in Sources */,
 				3737B25D1DE83704005D7CD9 /* WindowController.swift in Sources */,
 				3737B24E1DE8323C005D7CD9 /* AppDelegate.swift in Sources */,
 				3737B26F1DE8409C005D7CD9 /* SomenView.swift in Sources */,
@@ -251,6 +330,7 @@
 		};
 		3737B25A1DE8323C005D7CD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 882230CC5857C0B3ABBA241B /* Pods-TouchSomen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -265,6 +345,7 @@
 		};
 		3737B25B1DE8323C005D7CD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A48A88004EB21050049065F /* Pods-TouchSomen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -296,6 +377,7 @@
 				3737B25B1DE8323C005D7CD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

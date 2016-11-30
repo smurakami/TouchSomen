@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SomenView: NSView {
+class SomenView: NSView, SocketManagerDelegate {
     
     var somens: [Somen] = []
     var hashis: [Hashi] = []
@@ -18,6 +18,7 @@ class SomenView: NSView {
     
     func setup() {
         startUpdate()
+        SocketManager.shared.delegate = self
     }
     
     private func startUpdate() {
@@ -55,6 +56,13 @@ class SomenView: NSView {
 //        somen.pos = point
         somen.pos.x = point.x - 20
         somen.pos.y = bounds.size.height
+        somens.append(somen)
+    }
+    
+    func addSomen() {
+        let somen = Somen()
+        somen.pos.x = bounds.size.width
+        somen.pos.y = 0
         somens.append(somen)
     }
     
@@ -120,6 +128,10 @@ class SomenView: NSView {
         rect.origin.x += rect.size.width
         water.draw(in: rect)
     }
+    
+    func socketManager(_ manager: SocketManager, didReceiveData: [String : Any]) {
+        addSomen()
+    }
 }
 
 class Somen: NSObject {
@@ -183,11 +195,12 @@ class Somen: NSObject {
             }
         }
         
-        if pos.x <= -80 {
+        if pos.x <= -45 {
             isValid = false
+            SocketManager.shared.emit(message: "somen")
         }
         
-        if pos.y >= 80 {
+        if pos.y < -18 {
             isValid = false
         }
     }
