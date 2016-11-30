@@ -39,7 +39,6 @@ class SomenView: NSView {
         }
         
         if somenCounter == 0 {
-            addSomen()
             somenCounter = 40 + Int(arc4random() % 60)
         }
         
@@ -50,9 +49,12 @@ class SomenView: NSView {
         needsDisplay = true
     }
     
-    func addSomen() {
+    func addSomen(at point: NSPoint) {
         let somen = Somen()
-        somen.pos.x = bounds.size.width
+//        let size = somen.getSize(bounds)
+//        somen.pos = point
+        somen.pos.x = point.x - 20
+        somen.pos.y = bounds.size.height
         somens.append(somen)
     }
     
@@ -68,10 +70,16 @@ class SomenView: NSView {
     override func touchesBegan(with event: NSEvent) {
         if let touch = event.touches(matching: .began, in: self).first, touch.type == .direct {
             let location = touch.location(in: self)
-            addHashi(at: location)
-            for somen in somens {
-                if somen.hit(point: location) {
-                    somen.remove()
+            
+            let rightArea: CGFloat = 60
+            if location.x > bounds.size.width - rightArea {
+                addSomen(at: location)
+            } else {
+                addHashi(at: location)
+                for somen in somens {
+                    if somen.hit(point: location) {
+                        somen.remove()
+                    }
                 }
             }
         }
@@ -166,6 +174,12 @@ class Somen: NSObject {
             
             if duration > 10 {
                 pos.y -= 4
+            }
+        } else {
+            if pos.y > 0 {
+                pos.y -= 4
+            } else {
+                pos.y = 0
             }
         }
         
