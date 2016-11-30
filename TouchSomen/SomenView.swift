@@ -164,7 +164,7 @@ class Somen: NSObject {
     
     func hit(point point_: CGPoint) -> Bool {
         var point = point_
-        point.x += 4 * 9
+//        point.x += 4 * 9
         return point.x > pos.x && point.x < pos.x + hitWidth
     }
     
@@ -184,7 +184,7 @@ class Somen: NSObject {
         if isRemoving {
             let duration = counter - removeTime
             
-            if duration > 10 {
+            if duration > 0 {
                 pos.y -= 4
             }
         } else {
@@ -244,7 +244,26 @@ class Hashi: NSObject {
     var isValid = true
     
     static func getImages() -> [NSImage] {
-        let imageNames = [ "hashi_100", "hashi_101", "hashi_102", "hashi_103", "hashi_104", "hashi_105", "hashi_106", "hashi_107", "hashi_108", "hashi_109", "hashi_110", "hashi_111", "hashi_112", "hashi_113", "hashi_114", "hashi_115", "hashi_116", "hashi_117", "hashi_118", ]
+        let imageNames = [
+//            "hashi_100",
+//            "hashi_101",
+//            "hashi_102",
+//            "hashi_103",
+//            "hashi_104",
+//            "hashi_105",
+//            "hashi_106",
+//            "hashi_107",
+//            "hashi_108",
+            "hashi_109",
+            "hashi_110",
+            "hashi_111",
+            "hashi_112",
+            "hashi_113",
+            "hashi_114",
+            "hashi_115",
+            "hashi_116",
+            "hashi_117",
+            "hashi_118", ]
         return imageNames.map { NSImage(named: $0)! }
     }
     
