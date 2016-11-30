@@ -31,6 +31,9 @@ class SomenView: NSView {
         
         for somen in somens {
             somen.pos.x -= 4
+            if somen.pos.x <= -80 {
+                somen.isValid = false
+            }
         }
         
         if somenCounter == 0 {
@@ -38,7 +41,7 @@ class SomenView: NSView {
             somenCounter = 40 + Int(arc4random() % 60)
         }
         
-        somens = somens.filter { $0.pos.x >= -80 }
+        somens = somens.filter { $0.isValid }
         
         somenCounter -= 1
         needsDisplay = true
@@ -53,19 +56,22 @@ class SomenView: NSView {
     override func touchesBegan(with event: NSEvent) {
         if let touch = event.touches(matching: .began, in: self).first, touch.type == .direct {
             let location = touch.location(in: self)
-            somens = somens.filter { !$0.hit(point: location) }
+            for somen in somens {
+                if somen.hit(point: location) {
+                    somen.isValid = false
+                }
+            }
         }
-    }
-    
-    override func touchesEnded(with event: NSEvent) {
-    }
-    
-    override func touchesMoved(with event: NSEvent) {
     }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         drawTake(dirtyRect)
+        
+//        for somen in somens {
+//            somen.drawShadow(dirtyRect)
+//        }
+//        
         drawWater(dirtyRect)
         
         for somen in somens {
@@ -93,23 +99,68 @@ class SomenView: NSView {
 
 class Somen: NSObject {
     var pos = NSPoint()
-    let image = NSImage(named: "soumen")!
+    let images = Somen.getImages()
+    var imageIndex = 0
+    var counter = 0
+    
+    let shadow = NSImage(named: "soumen_shadow")!
     let hitWidth: CGFloat = 60 // 当たり判定
+    var isValid = true
+    
+    static func getImages() -> [NSImage] {
+        let imageNames = [
+            "soumen1", "soumen2", "soumen3", "soumen4", "soumen5", "soumen6", "soumen7", "soumen8", "soumen9", "soumen10",
+            ]
+        return imageNames.map { NSImage(named: $0)! }
+    }
+    
     func hit(point: CGPoint) -> Bool {
         return point.x > pos.x && point.x < pos.x + hitWidth
+    }
+    
+    func getSize(_ dirtyRect: NSRect) -> NSSize {
+        let image = images.first!
+        let height = dirtyRect.size.height * 0.6
+        let scale = height / image.size.height
+        let size = NSSize(
+            width: image.size.width * scale,
+            height: image.size.height * scale)
+        return size
     }
     
     func draw(_ dirtyRect: NSRect) {
         let height = dirtyRect.size.height * 0.6
         pos.y = (dirtyRect.size.height - height) / 2
-        let scale = height / image.size.height
-        let size = NSSize(
-            width: image.size.width * scale,
-            height: image.size.height * scale)
         
-        image.draw(in: NSRect(
+        let size = getSize(dirtyRect)
+        
+        imageIndex = counter
+        images[imageIndex % images.count].draw(in: NSRect(
             origin: pos,
             size: size))
+        
+//        if counter % 4 == 0 {
+//            imageIndex += Int(arc4random() % 2) * 2 - 1
+//            if imageIndex < 0 {
+//                imageIndex += images.count * 100
+//            }
+//        }
+        counter += 1
     }
+    
+    func drawShadow(_ dirtyRect: NSRect) {
+        let height = dirtyRect.size.height * 0.6
+        pos.y = (dirtyRect.size.height - height) / 2
+        
+        let size = getSize(dirtyRect)
+        
+        shadow.draw(in: NSRect(
+            origin: NSPoint(x: pos.x + 8, y: pos.y),
+            size: size))
+    }
+}
+
+class Hashi: NSObject {
+    
 }
 
