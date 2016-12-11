@@ -41,7 +41,10 @@ class SocketManager: NSObject {
         }
         
         socket.on("greeting") { data, ack in
-            ack.with(["type": "normal"])
+            ack.with([
+                "type": "normal",
+                "index": SomenParam.shared.index
+                ])
         }
         
         socket.connect()

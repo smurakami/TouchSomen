@@ -56,11 +56,12 @@ class SomenView: NSView, SocketManagerDelegate {
         needsDisplay = true
     }
     
-    func addSomen(at point: NSPoint) {
+    func addSomen(at point: NSPoint) -> Somen {
         let somen = Somen()
         somen.pos.x = point.x - 20
         somen.pos.y = bounds.size.height
         somens.append(somen)
+        return somen
     }
     
     func addSomen() {
@@ -90,11 +91,12 @@ class SomenView: NSView, SocketManagerDelegate {
             
             let rightArea: CGFloat = 60
             if location.x > bounds.size.width - rightArea {
-                addSomen(at: location)
+                let somen = addSomen(at: location)
                 SocketManager.shared.emit(event: "somen/add", data: [
                     "location": [
                         "x": location.x,
                         "y": location.y, ],
+                    "id": somen.data.id,
                     "index": SomenParam.shared.index ])
             } else {
                 SocketManager.shared.emit(event: "hashi/add", data: [
@@ -109,8 +111,8 @@ class SomenView: NSView, SocketManagerDelegate {
                             "location": [
                                 "x": location.x,
                                 "y": location.y, ],
-                            "id": somen.data.id ?? 0,
-                            "index": SomenParam.shared.index ])
+                            "id": somen.data.id,
+                            "index": somen.data.index ])
                         somen.remove()
                     }
                 }
@@ -157,15 +159,16 @@ class SomenView: NSView, SocketManagerDelegate {
 
 class Somen: NSObject {
     struct Data {
-        var id: Int? = nil
-        var index: Int? = nil
+        var id: String = UUID().uuidString
+        var index: Int = SomenParam.shared.index
+        
+        init() {
+            // do noting
+        }
         
         init(data: [String: Any]) {
-            id = data["id"] as? Int
-            index = data["index"] as? Int
-        }
-        init(){
-            self.init(data: [:])
+            id = data["id"] as? String ?? UUID().uuidString
+            index = data["index"] as? Int ?? SomenParam.shared.index
         }
         
         var dict: [String: Any] {
