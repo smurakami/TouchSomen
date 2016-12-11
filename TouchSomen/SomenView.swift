@@ -8,6 +8,12 @@
 
 import Cocoa
 
+class SomenParam {
+    var speed: CGFloat = 4
+    var index: Int = 0
+    static let shared = SomenParam()
+}
+
 class SomenView: NSView, SocketManagerDelegate {
     
     var somens: [Somen] = []
@@ -85,10 +91,26 @@ class SomenView: NSView, SocketManagerDelegate {
             let rightArea: CGFloat = 60
             if location.x > bounds.size.width - rightArea {
                 addSomen(at: location)
+                SocketManager.shared.emit(event: "somen/add", data: [
+                    "location": [
+                        "x": location.x,
+                        "y": location.y, ],
+                    "index": SomenParam.shared.index ])
             } else {
+                SocketManager.shared.emit(event: "hashi/add", data: [
+                    "location": [
+                        "x": location.x,
+                        "y": location.y, ],
+                    "index": SomenParam.shared.index ])
                 addHashi(at: location)
                 for somen in somens {
                     if somen.hit(point: location) {
+                        SocketManager.shared.emit(event: "somen/remove", data: [
+                            "location": [
+                                "x": location.x,
+                                "y": location.y, ],
+                            "id": somen.data.id ?? 0,
+                            "index": SomenParam.shared.index ])
                         somen.remove()
                     }
                 }
