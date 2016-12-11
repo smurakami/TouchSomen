@@ -9,8 +9,8 @@
 import Cocoa
 import SocketIO
 
-protocol SocketManagerDelegate: class {
-    func socketManager(_ manager: SocketManager, didReceiveData: [String: Any])
+@objc protocol SocketManagerDelegate: class {
+    @objc optional func socketManager(_ manager: SocketManager, didReceiveSomen data: [String: Any])
 }
 
 class SocketManager: NSObject {
@@ -19,30 +19,36 @@ class SocketManager: NSObject {
     weak var delegate: SocketManagerDelegate? = nil
     
     override init() {
-        url = URL(string:"http://smurakami.com:61130/")!
+//        url = URL(string:"http://smurakami.com:61130/")!
+        url = URL(string: "http://localhost:61130")!
         socket = SocketIOClient(socketURL: url, config: [.log(false), .forcePolling(true)])
         super.init()
         
         socket.on("connect") { data, ack in
             print("socket connected!!")
         }
+        
         socket.on("disconnect") { data, ack in
             print("socket disconnected!!")
         }
         
-        socket.on("from_server") { [weak self] data, emitter in
+        socket.on("somen") { [weak self] data, ack in
             guard let `self` = self else {return}
-            if let message = data as? [[String: Any]] {
-                if let data = message.first {
-                    self.delegate?.socketManager(self, didReceiveData: data)
-                }
+            if let dictarray = data as? [[String: Any]],
+                let data = dictarray.first {
+                    self.delegate?.socketManager?(self, didReceiveSomen: data)
             }
         }
+        
+        socket.on("greeting") { data, ack in
+            ack.with(["type": "normal"])
+        }
+        
         socket.connect()
     }
     
-    func emit(message: String) {
-        socket.emit("from_client", message)
+    func emit(event: String, data: SocketData) {
+        socket.emit(event, data)
     }
     
     static let shared = SocketManager()

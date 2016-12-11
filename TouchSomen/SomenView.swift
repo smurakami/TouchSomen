@@ -52,20 +52,23 @@ class SomenView: NSView, SocketManagerDelegate {
     
     func addSomen(at point: NSPoint) {
         let somen = Somen()
-//        let size = somen.getSize(bounds)
-//        somen.pos = point
         somen.pos.x = point.x - 20
         somen.pos.y = bounds.size.height
         somens.append(somen)
     }
     
     func addSomen() {
+        addSomen(data: [:])
+    }
+    
+    func addSomen(data: [String: Any]) {
         let somen = Somen()
+        somen.data = Somen.Data(data: data)
         somen.pos.x = bounds.size.width
         somen.pos.y = 0
         somens.append(somen)
     }
-    
+
     func addHashi(at point: NSPoint) {
         let hashi = Hashi()
         let size = hashi.getSize(bounds)
@@ -97,10 +100,6 @@ class SomenView: NSView, SocketManagerDelegate {
         super.draw(dirtyRect)
         drawTake(dirtyRect)
         
-//        for somen in somens {
-//            somen.drawShadow(dirtyRect)
-//        }
-//        
         drawWater(dirtyRect)
         
         for hashi in hashis {
@@ -129,18 +128,41 @@ class SomenView: NSView, SocketManagerDelegate {
         water.draw(in: rect)
     }
     
-    func socketManager(_ manager: SocketManager, didReceiveData: [String : Any]) {
-        addSomen()
+    func socketManager(_ manager: SocketManager, didReceiveSomen data: [String : Any]) {
+        addSomen(data: data)
     }
 }
 
 class Somen: NSObject {
+    struct Data {
+        var id: Int? = nil
+        var index: Int? = nil
+        
+        init(data: [String: Any]) {
+            id = data["id"] as? Int
+            index = data["index"] as? Int
+        }
+        init(){
+            self.init(data: [:])
+        }
+        
+        var dict: [String: Any] {
+            get {
+                var d = [String: Any]()
+                d["id"] = id
+                d["index"] = index
+                return d
+            }
+        }
+    }
+    
     var pos = NSPoint()
     let images = Somen.getImages()
     var imageIndex = 0
     var counter = 0
     var removeTime = 0
     var isRemoving = false
+    var data = Data()
     
     let shadow = NSImage(named: "soumen_shadow")!
     let hitWidth: CGFloat = 40.5 // 当たり判定
@@ -197,7 +219,7 @@ class Somen: NSObject {
         
         if pos.x <= -45 {
             isValid = false
-            SocketManager.shared.emit(message: "somen")
+            SocketManager.shared.emit(event: "somen", data: data.dict)
         }
         
         if pos.y < -18 {
