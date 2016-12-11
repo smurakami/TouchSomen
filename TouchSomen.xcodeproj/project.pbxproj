@@ -14,6 +14,7 @@
 		3737B25D1DE83704005D7CD9 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B25C1DE83704005D7CD9 /* WindowController.swift */; };
 		3737B26F1DE8409C005D7CD9 /* SomenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B26E1DE8409C005D7CD9 /* SomenView.swift */; };
 		37ADBCE81DEE9B6D00237BCD /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */; };
+		37EF07111DEEEC4F007D0151 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37EF07101DEEEC4F007D0151 /* icon.icns */; };
 		83C0FB483387ABCFDF300153 /* Pods_TouchSomen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		3737B25C1DE83704005D7CD9 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		3737B26E1DE8409C005D7CD9 /* SomenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomenView.swift; sourceTree = "<group>"; };
 		37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		37EF07101DEEEC4F007D0151 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		5A48A88004EB21050049065F /* Pods-TouchSomen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.release.xcconfig"; sourceTree = "<group>"; };
 		882230CC5857C0B3ABBA241B /* Pods-TouchSomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.debug.xcconfig"; sourceTree = "<group>"; };
 		B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchSomen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 		3737B24C1DE8323B005D7CD9 /* TouchSomen */ = {
 			isa = PBXGroup;
 			children = (
+				37EF07101DEEEC4F007D0151 /* icon.icns */,
 				3737B24D1DE8323C005D7CD9 /* AppDelegate.swift */,
 				3737B26E1DE8409C005D7CD9 /* SomenView.swift */,
 				3737B24F1DE8323C005D7CD9 /* ViewController.swift */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3737B2521DE8323C005D7CD9 /* Assets.xcassets in Resources */,
+				37EF07111DEEEC4F007D0151 /* icon.icns in Resources */,
 				3737B2551DE8323C005D7CD9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +341,7 @@
 				INFOPLIST_FILE = TouchSomen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12.1;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.self.TouchSomen;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.SoumenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -352,7 +356,7 @@
 				INFOPLIST_FILE = TouchSomen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12.1;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.self.TouchSomen;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.SoumenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
