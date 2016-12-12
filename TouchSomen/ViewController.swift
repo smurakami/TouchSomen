@@ -14,8 +14,9 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("view did load")
     }
-
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.

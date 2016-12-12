@@ -114,6 +114,8 @@ class SomenView: NSView, SocketManagerDelegate {
                             "id": somen.data.id,
                             "index": somen.data.index ])
                         somen.remove()
+                        
+                        Boom.pow()
                     }
                 }
             }

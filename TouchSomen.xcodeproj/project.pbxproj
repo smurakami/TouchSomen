@@ -15,6 +15,7 @@
 		3737B26F1DE8409C005D7CD9 /* SomenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B26E1DE8409C005D7CD9 /* SomenView.swift */; };
 		37ADBCE81DEE9B6D00237BCD /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */; };
 		37EF07111DEEEC4F007D0151 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37EF07101DEEEC4F007D0151 /* icon.icns */; };
+		37FFFAA71DFE3D0A00067F8D /* Boom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FFFAA61DFE3D0A00067F8D /* Boom.swift */; };
 		83C0FB483387ABCFDF300153 /* Pods_TouchSomen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		3737B26E1DE8409C005D7CD9 /* SomenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomenView.swift; sourceTree = "<group>"; };
 		37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		37EF07101DEEEC4F007D0151 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		37FFFAA61DFE3D0A00067F8D /* Boom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boom.swift; sourceTree = "<group>"; };
 		5A48A88004EB21050049065F /* Pods-TouchSomen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.release.xcconfig"; sourceTree = "<group>"; };
 		882230CC5857C0B3ABBA241B /* Pods-TouchSomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSomen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSomen/Pods-TouchSomen.debug.xcconfig"; sourceTree = "<group>"; };
 		B7854060CB0FFA971047F7FE /* Pods_TouchSomen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchSomen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				3737B2561DE8323C005D7CD9 /* Info.plist */,
 				3737B25C1DE83704005D7CD9 /* WindowController.swift */,
 				37ADBCE71DEE9B6D00237BCD /* SocketManager.swift */,
+				37FFFAA61DFE3D0A00067F8D /* Boom.swift */,
 			);
 			path = TouchSomen;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				3737B2501DE8323C005D7CD9 /* ViewController.swift in Sources */,
 				37ADBCE81DEE9B6D00237BCD /* SocketManager.swift in Sources */,
+				37FFFAA71DFE3D0A00067F8D /* Boom.swift in Sources */,
 				3737B25D1DE83704005D7CD9 /* WindowController.swift in Sources */,
 				3737B24E1DE8323C005D7CD9 /* AppDelegate.swift in Sources */,
 				3737B26F1DE8409C005D7CD9 /* SomenView.swift in Sources */,
