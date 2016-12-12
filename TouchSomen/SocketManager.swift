@@ -19,8 +19,7 @@ class SocketManager: NSObject {
     weak var delegate: SocketManagerDelegate? = nil
     
     override init() {
-//        url = URL(string:"http://smurakami.com:61130/")!
-        url = URL(string: "http://localhost:61130")!
+        url = URL(string:"http://smurakami.com:61130")!
         socket = SocketIOClient(socketURL: url, config: [.log(false), .forcePolling(true)])
         super.init()
         
